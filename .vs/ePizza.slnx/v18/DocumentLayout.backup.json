@@ -1,71 +1,12 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\A424752\\source\\repos\\ePizza\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{45E7FF31-97C4-4E21-A272-EF134213A1DE}|ePizza.Infrastructure\\ePizza.Infrastructure.csproj|c:\\users\\a424752\\source\\repos\\epizza\\epizza.infrastructure\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{45E7FF31-97C4-4E21-A272-EF134213A1DE}|ePizza.Infrastructure\\ePizza.Infrastructure.csproj|solutionrelative:epizza.infrastructure\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2DC0C458-02CE-4D46-A97D-13D09AB6047A}|ePizza.Application\\ePizza.Application.csproj|c:\\users\\a424752\\source\\repos\\epizza\\epizza.application\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2DC0C458-02CE-4D46-A97D-13D09AB6047A}|ePizza.Application\\ePizza.Application.csproj|solutionrelative:epizza.application\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DFB42FB7-E57F-4FF9-B3CD-E2AEE979449A}|ePizza.Domain\\ePizza.Domain.csproj|c:\\users\\a424752\\source\\repos\\epizza\\epizza.domain\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DFB42FB7-E57F-4FF9-B3CD-E2AEE979449A}|ePizza.Domain\\ePizza.Domain.csproj|solutionrelative:epizza.domain\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Class1.cs",
-              "DocumentMoniker": "C:\\Users\\A424752\\source\\repos\\ePizza\\ePizza.Infrastructure\\Class1.cs",
-              "RelativeDocumentMoniker": "ePizza.Infrastructure\\Class1.cs",
-              "ToolTip": "C:\\Users\\A424752\\source\\repos\\ePizza\\ePizza.Infrastructure\\Class1.cs",
-              "RelativeToolTip": "ePizza.Infrastructure\\Class1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-27T10:52:15.877Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Class1.cs",
-              "DocumentMoniker": "C:\\Users\\A424752\\source\\repos\\ePizza\\ePizza.Application\\Class1.cs",
-              "RelativeDocumentMoniker": "ePizza.Application\\Class1.cs",
-              "ToolTip": "C:\\Users\\A424752\\source\\repos\\ePizza\\ePizza.Application\\Class1.cs",
-              "RelativeToolTip": "ePizza.Application\\Class1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-27T10:51:01.422Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Class1.cs",
-              "DocumentMoniker": "C:\\Users\\A424752\\source\\repos\\ePizza\\ePizza.Domain\\Class1.cs",
-              "RelativeDocumentMoniker": "ePizza.Domain\\Class1.cs",
-              "ToolTip": "C:\\Users\\A424752\\source\\repos\\ePizza\\ePizza.Domain\\Class1.cs",
-              "RelativeToolTip": "ePizza.Domain\\Class1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-27T10:49:46.294Z",
-              "EditorCaption": ""
-            }
-          ]
-        }
-      ]
+      "DocumentGroups": []
     }
   ]
 }
