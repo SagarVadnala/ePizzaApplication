@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "ePizza.UI/1.0.0": {
+        "runtime": {
+          "ePizza.UI.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ePizza.UI/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
