@@ -22,9 +22,186 @@ The file seperation:
 				-> services - contains the services to interact with the backend
 
 				Dependency flow:
-				UI -> Application -> Infrastructure -> Domain 
+				UI -> Infrastructure -> Application-> Domain 
 
 				Domain -> will give result to end user back to --> UI
+--------------------------------------------------------------ADD DB CONTEXT and CONN in program.cs file------------------------------------------------------------------
+
+Go to infra layer and use EF POWER tool use reverse engineering to generate entities and DB context from the existing database. 
+
+then go to API layer add connection string in appsettings.json 
+
+ "ConnectionStrings": {
+    "DefaultConnection": "Server=(localdb)\\MSSQLLocalDB;Database=ePizzaApp;Trusted_Connection=True;MultipleActiveResultSets=true"
+  }
+
+  Now tell efCore to use this connection string in the DB context :
+  add in program .cs file
+  below AddControllers() method -->
+
+    builder.Services.AddDbContext<ePizzaAppContext>(options =>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+            });
+
+-----------------------------------------------------Adding controller---------------------------------------------------------------------------
+in API layer add a new controller named "ItemController" and add the following code to it:
+right click add controller  -> return normal ok as restlt
+
+Domain layer will be similar to Infra layer  
+
+reason -->  I dont to expose all the entities outer world and I need to pass only requried entities
+
+--> go to Domain layer and only propities which we want to expose to outer world
+
+
+------------------------------------------------------Repository pattern -------------------------------------------------------------------------
+
+we will create a REPOSITORIES folder -> infra layer 
+
+create folder --------Interface in that --> folder REPOSITORIES
+
+Now-> Infra layer:
+	1. create interface ItemRepository in REPOSITORIES folder
+
+Now -> Domain layer:
+	1. create interface IItemRepository in interface FOLDER->REPOSITORIES folder
+
+	Queation : why we need to create Repositiory interface in DOMAIN layer and implementation in Infra layer?
+				-> cant we do it in same 
+
+
+				my DOMAIN and INFRA layer are diff entities and we want to keep the concerns seperated.
+
+				in future if we want to use any other ORM
+				current EF CORE--> NEXT ado.net and next dapper    
+
+				SO in future only infra layer will be effected and domain layer will be intact and we can easily switch to other ORM without affecting the domain layer.
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+New Add 2 methods in  IItemRepository->
+										  Task<IEnumerable<ItemDomain>> GetItemsAsync();
+										  Task<IEnumerable<ItemDomain>> GetItemsById(int id);
+
+
+IMPLEMENT the inter face in ItemRepository class in INFRA LAYER and add the following code to it:
+		
+		Create ctor and add DI -> as we are in Infra layer (DB layer )
+
+		
+		 private readonly ePizzaAppContext _context;
+
+        public ItemRepository(ePizzaAppContext context)
+        {
+            _context = context;
+        }
+
+
+
+		and all the logic will be writen in :
+					namespace ePizza.Infrastructure.Repositories
+	
+					  public class ItemRepository : IItemRepository
+
+////////////////////////////////////////////CODE///////////////////////////////////////////////////////////////////////////////
+	public async Task<IEnumerable<ItemDomain>> GetItemsAsync()
+    {
+        var items = await _context.Items.ToListAsync(); // hit Db as select * from dbo.Items
+
+        // convert infra entities to domain entities to avoid expiosing internal details of the database structure to the domain layer
+
+        if(items.Any())
+        {
+            // in future we will use automapper
+            return items.Select(i => new ItemDomain()
+            {
+                Id = i.Id,
+                Name = i.Name,
+                Description = i.Description,
+                UnitPrice = i.UnitPrice,
+                ImageUrl = i.ImageUrl
+            });
+        }
+
+       return Enumerable.Empty<ItemDomain>();
+
+    }
+
+	------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	I need to call the above method through APPLICATION LAYER
+
+	Create a folder as Features in that -> create folder : Items 
+
+	in Items -> ItemService.cs  and IItemService.cs
+
+	now again we need to create DTOS -->  Request and Responce folders
+
+	Now as we are giving responce --> ItemResponseDto.cs 
+
+
+
+	-----------> add methods in IItemServices and implement in ItemServices
+
+	public class ItemService : IItemService
+    {
+        private readonly IItemRepository _itemRepository; // in domain layer
+
+        public ItemService(IItemRepository itemRepository)
+        {
+            _itemRepository = itemRepository;
+        }
+        public async Task<ItemResponseDto> GetItemAsync(int id)
+        {
+            var itemDomain = await _itemRepository.GetItemsById(id);
+
+            if (itemDomain != null)
+            {
+                return new ItemResponseDto()
+                {
+                    Description = itemDomain.Description,
+                    Id = itemDomain.Id,
+                    ImageUrl = itemDomain.ImageUrl,
+                    Name = itemDomain.Name,
+                    UnitPrice = itemDomain.UnitPrice,
+                };
+            }
+            return new ItemResponse
+
+
+            -------------------------------> now we need to all this from API:
+
+              public class ItemController : ControllerBase
+    {
+        private readonly IItemService _itemService;
+
+        public ItemController(IItemService itemService)
+        {
+            _itemService = itemService;
+        }
+
+        [HttpGet]
+        [Route("get")]
+        public async Task<IActionResult> Get()
+        {
+            // Logic to retrieve items from the database
+
+            var items = await _itemService.GetItemsAsync();
+            return Ok( items);
+        }
+        [HttpGet]
+        public async Task<IActionResult> Get(int id)
+        {
+            // Logic to retrieve items from the database
+
+            var items = await _itemService.GetItemAsync(id);
+            return Ok(items);
+        }
+
+    -------------------------------------total flow for out API getting data from DB.
+
+
 
 
 

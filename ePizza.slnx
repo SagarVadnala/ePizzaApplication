@@ -1,1 +1,21 @@
-<Solution />
+<Solution>
+  <Folder Name="/src/">
+    <File Path="TextFile1.txt" />
+  </Folder>
+  <Folder Name="/src/BE/" />
+  <Folder Name="/src/BE/API/">
+    <Project Path="ePizza.API/ePizza.API.csproj" />
+  </Folder>
+  <Folder Name="/src/BE/Application/">
+    <Project Path="ePizza.Application/ePizza.Application.csproj" />
+  </Folder>
+  <Folder Name="/src/BE/Domain/">
+    <Project Path="ePizza.Domain/ePizza.Domain.csproj" />
+  </Folder>
+  <Folder Name="/src/BE/Infrastructure/">
+    <Project Path="ePizza.Infrastructure/ePizza.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/src/UI/">
+    <Project Path="ePizza.UI/ePizza.UI.csproj" />
+  </Folder>
+</Solution>
