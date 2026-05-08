@@ -1,0 +1,30 @@
+We will be following Onion architecture for this project. to seperate the concerns and to make the code more maintainable and testable.
+
+The file seperation:
+	1. Domain 
+	2. Application
+	3. Infrastructure
+
+	we will have the following layers in our project:
+		1.src
+			-> BE - backend code
+				-> Domain - contains the business logic and the entities - only classes
+		
+				-> Infrastructure - contains the implementation of the interfaces and the data access layer 
+									-DB access/ Send Email/payment gatway/ etc
+				-> Application - contains the use cases and the services - real business layer and all the logic is added here 
+
+				-> External layer -> API - outer layer to interact with the frontend and other services
+
+			->FE - frontend code
+				-> components - contains the reusable components
+				-> pages - contains the pages of the application
+				-> services - contains the services to interact with the backend
+
+				Dependency flow:
+				UI -> Application -> Infrastructure -> Domain 
+
+				Domain -> will give result to end user back to --> UI
+
+
+
